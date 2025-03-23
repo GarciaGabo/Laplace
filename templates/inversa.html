@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformada Inversa de Laplace</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Calculadora de Transformada Inversa de Laplace</h1>
+        
+        <form method="POST">
+            <label for="expresion">Ingresa una función de s:</label>
+            <input type="text" id="expresion" name="expresion" required>
+            <button type="submit">Calcular Transformada Inversa</button>
+        </form>
+        {% if procedimiento %}
+            <h2>Procedimiento:</h2>
+            <div id="procedimiento">
+                {{ procedimiento | safe }}
+            </div>
+        {% endif %}
+
+        <a href="/" class="boton-secundario">Volver a Transformada de Laplace</a>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "procedimiento"]);
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, "resultado"]);
+        };
+    </script>
+</body>
+</html>
